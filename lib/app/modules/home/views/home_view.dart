@@ -16,6 +16,13 @@ class HomeView extends GetView<HomeController> {
             'assets/images/logo.png',
             height: 40,
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  controller.logoutDialog();
+                },
+                icon: Icon(Icons.power_settings_new_rounded))
+          ],
           bottom: PreferredSize(
             child: Container(),
             preferredSize: Size(0, 25),
