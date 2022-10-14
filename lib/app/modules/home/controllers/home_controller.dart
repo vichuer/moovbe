@@ -12,7 +12,6 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    // refreshToken();
     getBuses();
     super.onInit();
   }
@@ -31,18 +30,6 @@ class HomeController extends GetxController {
       String data = response.body;
       var json = jsonDecode(data);
       buses.value = Bus.fromJson(json);
-    });
-  }
-
-  Future<void> refreshToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token')!;
-    await http.get(Uri.parse(ApiUrls.refreshTokenURL), headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $token',
-    }).then((response) {
-      log(response.body);
     });
   }
 }
